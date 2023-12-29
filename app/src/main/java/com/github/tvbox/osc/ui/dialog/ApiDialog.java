@@ -93,7 +93,10 @@ public class ApiDialog extends BaseDialog {
                     Hawk.put(HawkConfig.API_HISTORY, history);
                     listener.onchange(newApi);
                     dismiss();
-                }
+                }else {
+	               listener.onchange(null);
+	               dismiss();
+                      }
                 // Capture Live input into Settings & Live History (max 20)
                 Hawk.put(HawkConfig.LIVE_URL, newLive);
                 if (!newLive.isEmpty()) {
