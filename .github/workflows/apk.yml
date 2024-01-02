@@ -43,5 +43,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.userName }}-${{ matrix.repoName }}
-          path: |
-            TVBoxOSC/apk/*
+          path: ${{ github.workspace }}/apk/*
