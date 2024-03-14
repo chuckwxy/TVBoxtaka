@@ -82,7 +82,7 @@ jobs:
         id: sign_app
         uses: r0adkll/sign-android-release@v1
         with:
-          releaseDirectory: TVBoxOSC     
+          releaseDirectory: app/build/outputs/apk/release     
           alias: ${{ secrets.ALIAS }}
           signingKeyBase64: ${{ secrets.KEYSTORE }}
           keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
