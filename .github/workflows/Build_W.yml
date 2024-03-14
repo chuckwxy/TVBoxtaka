@@ -1,4 +1,4 @@
-name: Test Build
+name: Build_W
 on:
 #  push:
 #    branches:
@@ -20,6 +20,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Set current date as an environment variable  
+        run: |  
+          echo "tag=$(date +'%Y%m%d-%H%M')" >> $GITHUB_ENV
+      - name: Extra Modify
+        run: |
+          echo '修改VersionName'
+          sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'${{ env.tag }}\'#" app/build.gradle
+          sed -i "/android:text=/s#=\"#=\"${{ env.tag }}\\\\n\\\\n#" app/src/main/res/layout/dialog_about.xml
       - name: Run build with Gradle wrapper
         run: ./gradlew assembleRelease -PIS_SO_BUILD=false
       - name: Sign APK
