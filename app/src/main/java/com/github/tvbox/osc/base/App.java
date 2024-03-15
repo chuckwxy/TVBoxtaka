@@ -90,12 +90,12 @@ public class App extends MultiDexApplication {
         File fontFile = new File(extStorageDir + "/tvbox.ttf");
         if (fontFile.exists()) {
             viewPump = ViewPump.builder()
-                    。addInterceptor(new CalligraphyInterceptor(
+                    .addInterceptor(new CalligraphyInterceptor(
                             new CalligraphyConfig.Builder()
-                                    。setDefaultFontPath(fontFile.getAbsolutePath())
-                                    。setFontAttrId(R.attr.fontPath)
-                                    。build()))
-                    。build();
+                                    .setDefaultFontPath(fontFile.getAbsolutePath())
+                                    .setFontAttrId(R.attr.fontPath)
+                                    .build()))
+                    .build();
         }
     }
 
