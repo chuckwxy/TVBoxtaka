@@ -77,7 +77,11 @@ public class ApiDialog extends BaseDialog {
         inputEPG.setText(Hawk.get(HawkConfig.EPG_URL, ""));
         inputProxy = findViewById(R.id.input_proxy);
         inputProxy.setText(Hawk.get(HawkConfig.PROXY_SERVER, ""));
-
+	    
+        String newApi1 ="http://饭太硬.top/tv";
+        String newApi2 ="https://agit.ai/Yoursmile7/TVBox/raw/branch/master/XC.json";
+        String newApi3 ="https://agit.ai/butterfly/gaotianliuyun/raw/branch/master/XYQ.json";
+	    
         findViewById(R.id.inputSubmit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,9 +104,27 @@ public class ApiDialog extends BaseDialog {
                     Hawk.put(HawkConfig.API_HISTORY, history);
                     listener.onchange(newApi);
                     dismiss();
-                }else {
-	               listener.onchange(null);
-	               dismiss();
+                }
+		else {
+	            ArrayList<String> history = Hawk.get(HawkConfig.API_HISTORY, new ArrayList<String>());
+                    if (!history.contains(newApi1))
+                        history.add(0, newApi1);
+
+                    // 在添加newApi2之前检查列表大小
+                    if (history.size() < 20 && !history.contains(newApi2))
+                        history.add(1, newApi2);
+
+                    // 在添加newApi3之前检查列表大小
+                    if (history.size() < 20 && !history.contains(newApi3))
+                        history.add(2, newApi3);
+
+                    // 如果列表大小仍然超过20，则从末尾移除元素
+                    if (history.size() > 20)
+                        history.remove(20);
+
+                    Hawk.put(HawkConfig.API_HISTORY, history);
+                    listener.onchange(newApi1); // 通知监听器newApi1已经添加
+                    dismiss();
                       }
                 // Capture Live input into Settings & Live History (max 20)
                 Hawk.put(HawkConfig.LIVE_URL, newLive);
