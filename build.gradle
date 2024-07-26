@@ -9,6 +9,10 @@ buildscript {
         //maven { url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2' }
         maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }
         maven { url "https://maven.aliyun.com/repository/releases" }
+        maven { name 'aliyunCentral'; url 'https://maven.aliyun.com/repository/central' }
+        maven { name 'aliyunJcenter'; url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { name 'aliyunGoogle'; url 'https://maven.aliyun.com/repository/google' }
+        maven { name 'aliyunPlugin'; url 'https://maven.aliyun.com/repository/gradle-plugin' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'
@@ -27,6 +31,10 @@ allprojects {
         //maven { url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2' }
         maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }
         maven { url "https://maven.aliyun.com/repository/releases" }
+        maven { name 'aliyunCentral'; url 'https://maven.aliyun.com/repository/central' }
+        maven { name 'aliyunJcenter'; url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { name 'aliyunGoogle'; url 'https://maven.aliyun.com/repository/google' }
+        maven { name 'aliyunPlugin'; url 'https://maven.aliyun.com/repository/gradle-plugin' }
     }
 }
 
