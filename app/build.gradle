@@ -8,7 +8,14 @@ def static buildTime() {
 
 android {
     compileSdk 34
-
+    signingConfigs {
+        sigin {
+            storeFile file("BUNNY.jks")
+            storePassword "000624"
+            keyAlias "bunny"
+            keyPassword "426000"
+        }
+    }
     defaultConfig {
         applicationId 'com.github.tvbox.osc.tk'
         minSdkVersion 21
@@ -22,6 +29,7 @@ android {
                 arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
             }
         }
+        signingConfig signingConfigs.sigin
     }
 
     packagingOptions {
