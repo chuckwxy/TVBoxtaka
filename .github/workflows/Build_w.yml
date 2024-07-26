@@ -30,18 +30,6 @@ jobs:
           sed -i "/android:text=/s#=\"#=\"${{ env.tag }}\\\\n\\\\n#" app/src/main/res/layout/dialog_about.xml
       - name: Run build with Gradle wrapper
         run: ./gradlew assembleRelease -PIS_SO_BUILD=false
-      - name: Sign APK
-        id: sign_app
-        uses: r0adkll/sign-android-release@v1
-        with:
-          releaseDirectory: app/build/outputs/apk/release
-          alias: ${{ secrets.ALIAS }}
-          signingKeyBase64: ${{ secrets.KEYSTORE }}
-          keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
-          keyPassword: ${{ secrets.ALIAS_PASSWORD }}
-        env:
-          # override default build-tools version (29.0.3) -- optional
-          BUILD_TOOLS_VERSION: "34.0.0"
       - name: Prepare App
         run: |
           mkdir -p ${{ github.workspace }}/apk/
