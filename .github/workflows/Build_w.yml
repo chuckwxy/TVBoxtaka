@@ -33,7 +33,7 @@ jobs:
       - name: Prepare App
         run: |
           mkdir -p ${{ github.workspace }}/apk/
-          for file in $(find "${{ github.workspace }}" -name "*-signed.apk" -print); do
+          for file in $(find "${{ github.workspace }}" -name "*.apk" -print); do
             mv "$file" ${{ github.workspace }}/apk/TVBOXtaka_${{ env.tag }}.apk
           done
       - name: Upload App To Artifact
